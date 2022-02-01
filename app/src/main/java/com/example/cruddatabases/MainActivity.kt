@@ -2,6 +2,8 @@ package com.example.cruddatabases
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.LinearLayout
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.room.Room
 import com.example.cruddatabases.databinding.ActivityMainBinding
 import com.example.cruddatabases.db.Student
@@ -11,6 +13,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var db:StudentDB
     //impletar el binding
     private lateinit var binding: ActivityMainBinding
+    private val adapter = StudentAdapter()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -18,9 +21,33 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        binding.rvStudentList.layoutManager = LinearLayoutManager(this)
+        binding.rvStudentList.adapter = adapter
         db = Room.databaseBuilder(applicationContext, StudentDB::class.java, "Estudiantes-Database").allowMainThreadQueries().build()
 
-        db.studentDao().addStudent(Student("sergio", "rivera", 21, "DAMP"))
+        //db.studentDao().addStudent(Student("sergio", "rivera", "21", "DAMP"))
         val student = db.studentDao().findAllStudent()
+
+        adapter.submitList(student)
+
+        binding.btnAnadir.setOnClickListener{
+            addStudent()
+        }
+    }
+
+    private fun addStudent() {
+        val name = binding.txtNombre.text.toString()
+        val lastname = binding.txtApellido.text.toString()
+        val edad = binding.txtEdad.text.toString()
+
+        val student = Student(name, lastname, edad, "DAMP")
+        db.studentDao().addStudent(student)
+
+        refresh()
+    }
+
+    private fun refresh() {
+        val student = db.studentDao().findAllStudent()
+        adapter.submitList(student)
     }
 }
