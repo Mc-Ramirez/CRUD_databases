@@ -1,9 +1,6 @@
 package com.example.cruddatabases.db
 
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
+import androidx.room.*
 
 @Dao
 interface StudentDao {
@@ -12,4 +9,7 @@ interface StudentDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun addStudent(student: Student)
+
+    @Delete
+    fun delete(student : Student)
 }

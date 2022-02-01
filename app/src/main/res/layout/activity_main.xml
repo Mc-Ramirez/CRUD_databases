@@ -8,45 +8,53 @@
 
     <EditText
         android:id="@+id/txt_nombre"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="184dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="5dp"
         android:ems="10"
-        android:hint="Nombreeee"
+        android:hint="Nombre"
         android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/txt_apellido"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="200dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="5dp"
         android:ems="10"
         android:hint="Apellido"
         android:inputType="textPersonName"
         android:minHeight="48dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txt_nombre" />
+        app:layout_constraintStart_toEndOf="@+id/txt_nombre"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="TouchTargetSizeCheck" />
 
     <EditText
         android:id="@+id/txt_edad"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="182dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="5dp"
         android:ems="10"
         android:hint="Edad"
         android:inputType="textPersonName"
-        android:minHeight="48dp"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txt_apellido" />
+        app:layout_constraintTop_toBottomOf="@+id/txt_nombre" />
 
     <Button
         android:id="@+id/btn_anadir"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="20dp"
+        android:backgroundTint="@android:color/holo_green_dark"
         android:text="Añadir"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:textColor="#263238"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txt_edad" />
 
@@ -59,4 +67,29 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btn_anadir" />
+
+    <EditText
+        android:id="@+id/txt_curso"
+        android:layout_width="204dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="5dp"
+        android:ems="10"
+        android:hint="Curso"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/txt_edad"
+        app:layout_constraintTop_toBottomOf="@+id/txt_apellido" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="20dp"
+        android:backgroundTint="?attr/colorError"
+        android:text="Delete"
+        app:layout_constraintStart_toEndOf="@+id/btn_anadir"
+        app:layout_constraintTop_toBottomOf="@+id/txt_edad" />
 </androidx.constraintlayout.widget.ConstraintLayout>
