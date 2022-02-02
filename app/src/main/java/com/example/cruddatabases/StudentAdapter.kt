@@ -9,7 +9,12 @@ import com.example.cruddatabases.databinding.ActivityMainBinding
 import com.example.cruddatabases.databinding.ItemStudentBinding
 import com.example.cruddatabases.db.Student
 
-class StudentAdapter : ListAdapter<Student, StudentAdapter.ViewHolder>(StudentDiffUtils()){
+class StudentAdapter (
+    private val onItenClick: (Student) -> Unit,
+    private val deleteItenClick: (Student) -> Unit):
+    ListAdapter<Student, StudentAdapter.ViewHolder>(StudentDiffUtils()){
+
+
     inner class ViewHolder (val binding: ItemStudentBinding) : RecyclerView.ViewHolder(binding.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -23,6 +28,8 @@ class StudentAdapter : ListAdapter<Student, StudentAdapter.ViewHolder>(StudentDi
         holder.binding.tvName.text = student.name
         holder.binding.tvLastname.text = student.lastName
         holder.binding.tvEdad.text = student.age
+        holder.binding.root.setOnClickListener {onItenClick(student)}
+        holder.binding.btnDelete.setOnClickListener{deleteItenClick(student)}
     }
 }
 

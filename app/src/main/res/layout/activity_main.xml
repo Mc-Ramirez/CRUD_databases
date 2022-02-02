@@ -82,14 +82,4 @@
         app:layout_constraintStart_toEndOf="@+id/txt_edad"
         app:layout_constraintTop_toBottomOf="@+id/txt_apellido" />
 
-    <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="20dp"
-        android:backgroundTint="?attr/colorError"
-        android:text="Delete"
-        app:layout_constraintStart_toEndOf="@+id/btn_anadir"
-        app:layout_constraintTop_toBottomOf="@+id/txt_edad" />
 </androidx.constraintlayout.widget.ConstraintLayout>

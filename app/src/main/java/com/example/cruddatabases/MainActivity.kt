@@ -3,6 +3,7 @@ package com.example.cruddatabases
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.LinearLayout
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.room.Room
 import com.example.cruddatabases.databinding.ActivityMainBinding
@@ -13,7 +14,17 @@ class MainActivity : AppCompatActivity() {
     private lateinit var db:StudentDB
     //impletar el binding
     private lateinit var binding: ActivityMainBinding
-    private val adapter = StudentAdapter()
+    private val adapter = StudentAdapter({
+        Toast.makeText(this, "student: $it", Toast.LENGTH_SHORT).show()
+    }, {
+        db.studentDao().delete(it)
+        refresh()
+    })
+
+    private fun refresh() {
+        val student = db.studentDao().findAllStudent()
+        adapter.submitList(student)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,6 +38,7 @@ class MainActivity : AppCompatActivity() {
 
         //db.studentDao().addStudent(Student("sergio", "rivera", "21", "DAMP"))
         val student = db.studentDao().findAllStudent()
+        refresh()
 
         adapter.submitList(student)
 
@@ -46,8 +58,5 @@ class MainActivity : AppCompatActivity() {
         refresh()
     }
 
-    private fun refresh() {
-        val student = db.studentDao().findAllStudent()
-        adapter.submitList(student)
-    }
+
 }

@@ -42,6 +42,16 @@
                 android:textColor="@color/black"
                 android:textSize="24sp"
                 android:textStyle="bold" />
+            <Button
+                android:id="@+id/btn_delete"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="20dp"
+                android:backgroundTint="?attr/colorError"
+                android:text="Delete"
+                app:layout_constraintStart_toEndOf="@+id/btn_anadir"
+                app:layout_constraintTop_toBottomOf="@+id/txt_edad" />
         </LinearLayout>
 
         //segunda fila
